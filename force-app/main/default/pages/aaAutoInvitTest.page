@@ -1,0 +1,20 @@
+<apex:page >
+  <script type='text/javascript' src='https://c.la1-c1-iad.salesforceliveagent.com/content/g/js/46.0/deployment.js'></script>
+<script type='text/javascript'>
+liveagent.init('https://d.la1-c1-iad.salesforceliveagent.com/chat', '5720b000000LR9j', '00D40000000MvPv');
+</script>
+
+<div id="liveagent_invite_button_5730b000000LREL" style="display:none;"><span style="cursor: pointer; width: 100px; height: 20px; padding: 5px;" onclick="liveagent.startChat('5730b000000LREL')">Start Chat</span><span style="cursor: pointer; width: 100px; height: 20px; padding: 5px;" onclick="liveagent.rejectChat('5730b000000LREL')">Reject Chat</span></div>
+
+liveagent.rejectChat('5730b000000LREL');
+
+liveagent.startChat('5730b000000LREL');
+
+liveagent_invite_button_5730b000000LREL
+
+<script type='text/javascript' src='https://c.la1-c1-iad.salesforceliveagent.com/content/g/js/46.0/deployment.js'></script>
+<script type='text/javascript'>
+liveagent.init('https://d.la1-c1-iad.salesforceliveagent.com/chat', '5720b000000LR9j', '00D40000000MvPv');
+</script>
+
+</apex:page>

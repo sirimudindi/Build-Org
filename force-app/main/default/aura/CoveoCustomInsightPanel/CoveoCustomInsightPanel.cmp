@@ -1,0 +1,19 @@
+<aura:component implements="force:hasRecordId,force:hasSObjectName,flexipage:availableForRecordHome" access="global">
+
+    <aura:attribute name="name" type="String" default="" access="global" />
+    <aura:attribute name="recordFields" type="String" default="Case_Subject, Case_Description" access="global" />
+	<aura:attribute name="searchHub" type="String" default="" access="global" />
+	<aura:attribute name="debug" type="Boolean" default="false" access="global" />
+
+	<!-- this is simply a wrapper component for these two Coveo components, so that we can add an event listener to the attachToCase event -->
+	<CoveoV2:AgentPanel aura:id="coveoAgentPanel"
+                        title="Search"
+	                    recordId="{!v.recordId}"
+                        sObjectName="{!v.sObjectName}" 
+                        recordFields="{!v.recordFields}"
+                        customScripts="{!$Resource.CoveoCustomScript}"/>
+
+    <CoveoV2:AttachedResults title="Attached Results"
+                             recordId="{!v.recordId}"/>
+    
+</aura:component>

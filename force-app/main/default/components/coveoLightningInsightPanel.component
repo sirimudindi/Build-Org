@@ -1,0 +1,114 @@
+<apex:component ><div id="search" class="CoveoSearchInterface" data-design="new" data-results-per-page="10" data-excerpt-length="150" data-enable-history="false">
+  <div class="CoveoAnalytics"></div>
+  <div class="CoveoFullSearch"></div>
+  <div class="coveo-search-section">
+    <div class="CoveoSearchbox" data-enable-omnibox="true"></div>
+  </div>
+  <div class="coveo-tab-section">
+    <a class="CoveoTab" data-id="All" data-caption="All Content" data-expression="@source==Support OR @objecttype==Knowledge" style="padding: 0; margin-right: 10px;"></a>
+    <div class="CoveoTab" data-id="Help Articles" data-caption="Help Articles" data-expression="@source==Support"></div>
+    <div class="CoveoTab" data-id="Knowledge" data-caption="Knowledge" data-expression="@objecttype==Knowledge" style="padding: 0;"></div>
+  </div>
+  <div class="coveo-facet-column">
+    <div class="CoveoFacet" data-title="Product" data-field="@article_product" data-tab="All" data-number-of-values="0"></div>
+    <div class="CoveoFacet" data-title="External Category" data-field="@external_category" data-tab="All" data-number-of-values="0"></div>
+    <div class="CoveoFacet" data-title="Feature Category" data-field="@internal_category_1" data-tab="All" data-number-of-values="0"></div>
+    <div class="CoveoFacet" data-title="Sub-Feature Category" data-field="@internal_category_2" data-tab="All" data-number-of-values="0"></div>
+    <div class="CoveoFacet" data-title="Knowledge Feature" data-field="@sffeaturecategoryc" data-tab="All" data-number-of-values="0"></div>
+    <div class="CoveoFacet" data-title="Knowledge Sub-Feature" data-field="@sffeaturesubcategoryc" data-tab="All" data-number-of-values="0"></div>
+    <div class="CoveoFacet" data-title="Knowledge Type" data-field="@sfrecordtypename" data-tab="All" data-number-of-values="0"></div>
+  </div>
+  <div class="coveo-main-section">
+    <div class="coveo-results-column">
+      <div class="CoveoBreadcrumb"></div>
+      <div class="coveo-summary-section">
+        <span class="CoveoQuerySummary"><div class="coveo-show-if-no-results"></div></span>
+        <span class="CoveoQueryDuration"></span>
+      </div>
+      <div class="CoveoHiddenQuery"></div>
+      <div class="CoveoDidYouMean"></div>
+      <div class="CoveoErrorReport"></div>
+      <div class="CoveoResultList" data-auto-select-fields-to-include="true" data-layout="list">
+        <script id="SalesforceKnowledgeArticle" class="result-template" type="text/html" data-field-sfknowledgearticleid=""><div class="coveo-result-frame" style="padding:0 16px 16px 0;">
+    <div class="CoveoResultActionsMenu">
+        <div class="CoveoAttachToCase" data-display-tooltip="true"></div>
+
+        <!---<div class='CoveoResultActionsSendEmail'data-action-name="Case.SendEmail" data-insert-type='cursor'></div>-->
+
+        <!--<div class="CoveoResultActionsPostToFeed" data-insert-type='cursor'></div>-->
+        <div class="CoveoResultActionsSendLiveAgent"></div>
+    </div>
+    <div class="coveo-result-cell">
+        <span class="CoveoIcon" data-small="true"></span>
+    </div>
+    <div class="coveo-result-cell" style="vertical-align: top;padding-left: 16px;">
+        <div class="coveo-result-row" style="margin-top:0;">
+            <div class="coveo-result-cell coveo-no-wrap" style="vertical-align: top; font-size: 16px;">
+                <a class="CoveoSalesforceResultLink"></a>
+            </div>
+            <div class="coveo-result-cell" style="width:120px;text-align:right;font-size:12px">
+                <div class="coveo-result-row">
+                    <span class="CoveoFieldValue" data-field="@sflastmodifieddate" data-helper="date"></span>
+                </div>
+            </div>
+        </div>
+        <div class="coveo-result-row" style="margin-top:12px;">
+            <div class="coveo-result-cell">
+                <span class="CoveoFieldValue" data-field="@sfsummary"></span>
+            </div>
+        </div>
+        <div class="coveo-result-row" style="margin-top:8px;">
+            <div class="coveo-result-cell" style="line-height:1.5em;">
+                <span class="CoveoFieldValue" data-field="@sfownername" data-text-caption="Owner" style="margin-right:30px;"></span>
+                <span class="CoveoFieldValue" data-field="@sfarticletype" data-text-caption="Type" style="margin-right:30px;"></span>
+                <span class="CoveoFieldValue" data-field="@sfarticlenumber" data-text-caption="Article number"></span>
+            </div>
+        </div>
+        <div class="coveo-result-row" style="margin-top:8px;">
+            <div class="coveo-result-cell">
+                <table class="CoveoFieldTable" data-minimized-by-default="true">
+                    <tr data-caption="Created" data-field="@sfcreatedbyname"></tr>
+                    <tr data-caption="Language" data-field="@sflanguage"></tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+</script>
+        <script id="Default" class="result-template" type="text/html" data-layout="list"><div class="coveo-result-frame">
+    <div class="CoveoResultActionsMenu">
+        <div class="CoveoAttachToCase" data-display-tooltip="true"></div>
+
+       <!--- <div class='CoveoResultActionsSendEmail'data-action-name="Case.SendEmail" data-insert-type='cursor' data-html-body='<a href="${ClickUri}">${title}</a><p>In source: ${raw.syssource}</p> <p>${Excerpt}</p>'></div>-->
+
+        <!---<div class="CoveoResultActionsPostToFeed" data-insert-type='cursor'></div>-->
+        <div class="CoveoResultActionsSendLiveAgent"></div>
+    </div>
+    <div class="coveo-result-row" style="margin-bottom:7px;">
+        <div class="coveo-result-cell" style="vertical-align:top;width:32px;">
+            <span class="CoveoIcon" data-small="true" data-with-label="false"></span>
+        </div>
+        <div class="coveo-result-cell" style="vertical-align:middle;font-size:14px;padding-left:10px;">
+            <div class="coveo-result-row" style="font-size:15px;margin:0;"></div>
+            <a class="CoveoSalesforceResultLink" data-open-in-sub-tab="true"></a>
+        </div>
+    </div>
+    <div class="coveo-result-row">
+        <div class="coveo-result-cell">
+            <span class="CoveoExcerpt"></span>
+        </div>
+    </div>
+    <div class="coveo-result-row">
+        <div class="coveo-result-row">
+            <div class="coveo-result-cell">
+                <div class="CoveoFieldValue" data-text-caption="Source:" data-field="@syssource" data-facet="null"></div>
+            </div>
+        </div>
+    </div>
+</div>
+</script>
+      </div>
+      <div class="CoveoPager"></div>
+    </div>
+  </div>
+</div></apex:component>

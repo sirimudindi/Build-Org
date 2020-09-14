@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApexTestSuite xmlns="http://soap.sforce.com/2006/04/metadata">
+    <testClassName>trac_AccountSyncOwnerTest</testClassName>
+    <testClassName>trac_BatchUtilsTest</testClassName>
+    <testClassName>trac_CaseEntitlementsAssociationTest</testClassName>
+    <testClassName>trac_CaseNewCollaboratorTest</testClassName>
+    <testClassName>trac_CasesEmailTemplateTest</testClassName>
+    <testClassName>trac_ConvertLicensedLeadsTest</testClassName>
+    <testClassName>trac_DispatcherTest</testClassName>
+    <testClassName>trac_DomainAccountAssignmentTest</testClassName>
+    <testClassName>trac_DomainUtilsTest</testClassName>
+    <testClassName>trac_ExcessiveCaseAlertTest</testClassName>
+    <testClassName>trac_IntegrationLeadProcessingTest</testClassName>
+    <testClassName>trac_KillSwitchUtilsTest</testClassName>
+    <testClassName>trac_LeadConvertCtlr_Test</testClassName>
+    <testClassName>trac_PlanTriggerHandlerTest</testClassName>
+    <testClassName>trac_QueueAccountOwnerBatchTest</testClassName>
+    <testClassName>trac_QueueDomainContactOwnerBatchTest</testClassName>
+    <testClassName>trac_QueueDomainLeadOwnerBatchTest</testClassName>
+    <testClassName>Trac_TriggerHandlerBaseTest</testClassName>
+</ApexTestSuite>

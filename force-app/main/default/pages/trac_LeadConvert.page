@@ -1,0 +1,94 @@
+<apex:page showHeader="true" sidebar="true" standardController="Lead" extensions="trac_LeadConvertCtlr">
+    <apex:includescript value="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" />
+	<apex:sectionHeader title="Convert Lead" subtitle="{!lead.Name}"/>
+	<apex:form >
+
+		<apex:pageMessages />
+
+		<style>
+			.data2Col input[type=text] {width: 200px;}
+			
+		</style>
+
+		<apex:pageBlock title="">			
+			<apex:pageBlockButtons location="top">
+				<!-- <apex:commandButton value="Convert" action="{!convertLead}" disabled="{! ((leadRecord.Domain_Lookup__c == null) || (leadRecord.Qualified_for_Conversion__c == False)) }"/> -->
+				<apex:commandButton value="Convert" action="{!convertLead}" disabled="{! ((leadRecord.Domain_Lookup__c == null)) }"/>
+				<apex:commandButton value="Cancel"  onclick="document.location = '/{!lead.Id}';return false"/>
+			</apex:pageBlockButtons>
+
+			<apex:pageBlockSection title="Convert Lead" collapsible="false" columns="1">
+
+				<apex:pageBlockSectionItem dataTitle="Record Owner">
+					<apex:outputLabel value="Record Owner" for="recordOwner"/>
+					<apex:inputText value="{!lead.Owner.Name}" label="Record Owner" disabled="true" id="recordOwner"/>
+				</apex:pageBlockSectionItem>
+
+				<apex:pageBlockSectionItem dataTitle="Domain">
+					<apex:outputLabel value="Domain" for="domainName"/>
+					<apex:inputText required="true" value="{!lead.Domain_Lookup__r.Name}" label="Account Name" disabled="true" id="domainName"/>
+				</apex:pageBlockSectionItem>
+
+				<apex:pageBlockSectionItem dataTitle="Account Name">
+					<apex:outputLabel value="Account Name" for="accountName"/>
+					<apex:inputText required="true" value="{!accountName}" label="Account Name" disabled="{!domain != null && domain.Account__r.Name != null}" maxlength="100" id="accountName" styleClass="account_name"/>
+
+				</apex:pageBlockSectionItem>
+				<apex:pageBlockSectionItem dataTitle="Assign to Existing Account" rendered="{!domain != null && domain.Account__r.Name == null}">
+					
+					<apex:outputLabel value="Account Lookup" for="accountId"/>
+					
+					<apex:inputField value="{!domainAccount.Account__c}" label="Account Lookup" id="accountId" styleClass="account_lookup" />						
+					
+
+				</apex:pageBlockSectionItem>
+
+				<apex:pageBlockSectionItem dataTitle="Account Creation Radio Buttons" rendered="{!domain != null && domain.Account__r.Name == null}">
+
+					<apex:inputCheckbox id="createAccountOfLookup" value="{!createAccountOfLookup}" label="Convert lead under account specified in the 'Account Lookup' field."  onclick="enableAccountLookup(this);"/> 
+					<apex:outputLabel value="Convert lead under account specified in the 'Account Lookup' field." for="createAccountOfLookup"/>
+
+				</apex:pageBlockSectionItem>
+				
+				<apex:pageBlockSectionItem dataTitle="Opportunity Name">
+					<apex:outputLabel value="Opportunity Name" for="oppName"/>
+					<apex:inputText required="true" value="{!opportunityName}"  label="Opportunity Name" id="opportunityName" maxlength="100"/>
+				</apex:pageBlockSectionItem>
+
+				<apex:pageBlockSectionItem dataTitle="Domain">
+					<apex:inputCheckbox value="{!dontCreateOpp}"   label="Dont't create opportunity" id="dontCreateOpp"/>
+					<apex:outputLabel value="Do not create a new opportunity upon conversion." for="dontCreateOpp"/>
+				</apex:pageBlockSectionItem>
+
+			</apex:pageBlockSection>
+		</apex:pageBlock>
+
+		<script type="text/javascript">
+			/*
+            *  @description ON DOCUMENT READY
+            *  @author Majeda Mahfuz, Traction on Demand
+            *  @date 2014-Oct-27
+            */
+        	var $j = $j? $j:jQuery.noConflict();
+        	$j(document).ready(function(){
+        		console.log("document ready");
+        		$j(".account_lookup").prop('disabled', true);
+        		$j(".lookupIcon").hide();
+
+	        	
+        	});
+        	function enableAccountLookup(that){
+        		if(that.checked){
+	        		$j(".account_lookup").prop('disabled', false);
+	        		$j(".account_name").prop('disabled', true);
+    	    		$j(".lookupIcon").show();
+        		}
+        		else{
+	        		$j(".account_lookup").prop('disabled', true);
+	        		$j(".account_name").prop('disabled', false);
+	        		$j(".lookupIcon").hide();
+        		}
+        	}
+		</script>
+	</apex:form>
+</apex:page>

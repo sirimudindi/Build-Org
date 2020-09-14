@@ -1,0 +1,17 @@
+<!--
+ - Author:
+ - Jonatas Barbosa, Traction on Demand
+ -
+ - Description:
+ - Account Alignment feature
+ -
+ - Revision History:
+ - Jun/15/2020 - Jonatas Barbosa, Traction on Demand - File created
+ -->
+<apex:page id="DomainAccountAlignmentIndicator" standardController="Domain__c" extensions="AccountAlignmentIndicatorCtlr" title="Domain - Account Alignment Indicator">
+    <apex:outputPanel rendered="{!showMessage}">
+        <apex:pageMessage severity="warning"
+                          summary="{!$Label.Account_Alignment_Indicator}"
+                          strength="2" />
+    </apex:outputPanel>
+</apex:page>

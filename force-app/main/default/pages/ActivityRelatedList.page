@@ -1,0 +1,35 @@
+<apex:page standardController="Domain__c" showHeader="false" sidebar="false" extensions="trac_ActivityRelatedListCtlr">
+    <apex:pageBlock id="customTaskRelatedList" title="Domain Related Tasks">
+        <apex:outputPanel id="myPanel">
+            <apex:pageBlockTable value="{!tasks}" var="t" columnsWidth="25%,12.5%,12.5%,50%">
+            <apex:column >
+                <apex:facet name="header">Subject</apex:facet>
+                <apex:outputLink target="_blank" value="/{!t.Id}">{!t.Subject}</apex:outputLink>
+            </apex:column>
+            <apex:column >
+                <apex:facet name="header">Due Date</apex:facet>
+                {!t.ActivityDate}
+            </apex:column>          
+            <apex:column >
+                <apex:facet name="header">Status</apex:facet>
+                {!t.Status}
+            </apex:column>
+            <apex:column >
+                 <apex:facet name="header">Assigned To</apex:facet>
+                <apex:outputLink target="_blank" value="/{!t.OwnerId}">{!t.Owner.Name}</apex:outputLink>
+            </apex:column>
+            </apex:pageBlockTable>
+        </apex:outputPanel>
+
+        <apex:pageBlockButtons location="bottom" >
+           <apex:outputPanel id="myButtons">
+           <apex:form >
+                <apex:commandButton action="{!beginning}" title="Beginning" value="First Page" />
+                <apex:commandButton action="{!previous}" title="Previous" value="Previous Page" />        
+                <apex:commandButton action="{!next}" title="Next" value="Next page" />
+                <apex:commandButton action="{!end}" title="End" value="Last Page" />         
+           </apex:form>
+           </apex:outputPanel>
+          </apex:pageBlockButtons>
+    </apex:pageBlock>
+</apex:page>

@@ -1,0 +1,186 @@
+<apex:component ><div id="search" class="CoveoSearchInterface" data-enable-history="false" data-design="new">
+  <div class="CoveoFolding" data-tab-not="SalesforceChatter, SalesforceOrders"></div>
+  <div class="CoveoAnalytics"></div>
+  <div class="coveo-tab-section">
+    <a class="CoveoTab" data-id="All" data-caption="All Content" data-expression="@source==Support AND @descriptor==(help_article, function) OR @objecttype==Knowledge AND @source==&quot;Salesforce - Build&quot;"></a>
+    <div class="CoveoTab" data-id="Help Article" data-caption="Help Article" data-expression="@source==Support AND @descriptor==(help_article, function)"></div>
+    <a class="CoveoTab" data-id="Knowledge" data-caption="Knowledge" data-expression="@objecttype==Knowledge AND @sfpublicationstatusc==(Online, Archived) AND @source==&quot;Salesforce - Build&quot;"></a>
+    <a class="CoveoTab" data-id="SalesforceCase" data-caption="Cases" data-expression="@objecttype==Case AND @source==&quot;Salesforce - Build&quot;"></a>
+  </div>
+  <div class="coveo-search-section">
+    <div class="CoveoSettings"></div>
+    <div class="CoveoSearchbox" data-enable-omnibox="true"></div>
+  </div>
+  <div class="coveo-main-section">
+    <div class="coveo-facet-column">
+      <div class="CoveoFacet" data-title="Case Type" data-field="@sfrecordtypename" data-number-of-values="" data-tab="SalesforceCase"></div>
+      <div class="CoveoFacet" data-title="Feature Category" data-field="@sffeaturecategoryc" data-number-of-values="" data-tab="SalesforceCase"></div>
+      <div class="CoveoFacet" data-title="Sub-Feature Category" data-field="@sffeaturesubcategoryc" data-number-of-values="" data-tab="SalesforceCase"></div>
+      <div class="CoveoDynamicFacet" data-field="@sfescidc" data-title="ESC ID" data-id="escid" data-number-of-values="0"></div>
+      <div class="CoveoFacet" data-title="Bug ID" data-field="@sfbugidc" data-number-of-values="1" data-tab="SalesforceCase"></div>
+      <div class="CoveoDynamicFacet" data-title="Product" data-field="@article_product" data-number-of-values="0" data-tab="All, Help Article"></div>
+      <div class="CoveoFacet" data-title="Parent Case" data-field="@sfparentcasecasenumber" data-number-of-values="1" data-tab="SalesforceCase"></div>
+      <div class="CoveoFacet" data-title="Escalated Case" data-field="@sfisescalated" data-number-of-values="" data-tab="SalesforceCase"></div>
+      <div class="CoveoFacet" data-title="Platform" data-field="@sfplatformc" data-number-of-values="" data-tab="SalesforceCase"></div>
+      <div class="CoveoFacet" data-title="Browser" data-field="@sfbrowserc" data-number-of-values="" data-tab="SalesforceCase"></div>
+      <div class="CoveoFacet" data-title="Product" data-field="@article_product" data-number-of-values="" data-tab="All, Help Article"></div>
+      <div class="CoveoFacet" data-title="External Category" data-field="@external_category" data-number-of-values="" data-tab="All, Help Article"></div>
+      <div class="CoveoFacet" data-title="Feature Category" data-field="@internal_category_1" data-number-of-values="" data-tab="All, Help Article"></div>
+      <div class="CoveoFacet" data-title="Sub-Feature Category" data-field="@internal_category_2" data-number-of-values="" data-tab="All, Help Article"></div>
+      <div class="CoveoFacet" data-title="Knowledge Feature" data-field="@sffeaturecategoryc" data-number-of-values="" data-tab="All, Knowledge"></div>
+      <div class="CoveoFacet" data-title="Knowledge Sub-Feature " data-field="@sffeaturesubcategoryc" data-number-of-values="" data-tab="All, Knowledge"></div>
+      <div class="CoveoFacet" data-title="Knowledge Type" data-field="@sfkavrecordtypename" data-number-of-values="4" data-tab="Knowledge, All"></div>
+      <div class="CoveoDynamicFacetManager" data-enable-reorder="false">
+      </div>
+    </div>
+    <div class="coveo-results-column">
+      <div class="CoveoShareQuery"></div>
+      <div class="CoveoPreferencesPanel">
+        <div class="CoveoResultsPreferences"></div>
+        <div class="CoveoResultsFiltersPreferences"></div>
+      </div>
+      <div class="CoveoTriggers"></div>
+      <div class="CoveoBreadcrumb"></div>
+      <div class="coveo-results-header">
+        <div class="coveo-summary-section">
+          <span class="CoveoQuerySummary"><div class="coveo-show-if-no-results"></div></span>
+          <span class="CoveoQueryDuration"></span>
+        </div>
+        <div class="coveo-result-layout-section">
+          <span class="CoveoResultLayout"></span>
+        </div>
+        <div class="coveo-sort-section">
+          <span class="CoveoSort" data-sort-criteria="relevancy" data-caption="Relevance"></span>
+          <span class="CoveoSort" data-sort-criteria="date descending,date ascending" data-caption="Date"></span>
+        </div>
+      </div>
+      <div class="CoveoHiddenQuery"></div>
+      <div class="CoveoDidYouMean"></div>
+      <div class="CoveoErrorReport" data-pop-up="false"></div>
+      <div class="CoveoResultList" data-wait-animation="fade" data-layout="list" data-auto-select-fields-to-include="true">
+        <script id="SalesforceCase" class="result-template" type="text/html" data-field-objecttype="Case"><div class="coveo-result-frame" style="padding:0 16px 16px 0;">
+    <div class="coveo-result-cell">
+        <span class="CoveoIcon" data-small="true"></span>
+    </div>
+    <div class="coveo-result-cell" style="vertical-align: top;padding-left:16px;">
+        <div class="coveo-result-row" style="margin-top:0;">
+            <div class="coveo-result-cell coveo-no-wrap" style="vertical-align: top; font-size: 16px;">
+                <a class="CoveoSalesforceResultLink" data-title-template="${title} #${raw.sfcasenumber}" data-open-in-primary-tab="false"></a>
+            </div>
+            <div class="coveo-result-cell" style="width:120px;text-align:right;font-size:12px">
+                <div class="coveo-result-row">
+
+                    <!---<span class="CoveoFieldValue" data-field="@sflastmodifieddate" data-helper="date"></span>-->
+                    <div class="CoveoAttachToCase" data-display-tooltip="true"></div>
+                </div>
+            </div>
+        </div>
+        <div class="coveo-result-row" style="margin-top:12px;">
+            <div class="coveo-result-cell">
+                <span class="CoveoFieldValue" data-field="@sfdescription"></span>
+            </div>
+        </div>
+        <div class="coveo-result-row" style="margin-top:8px;">
+            <div class="coveo-result-cell" style="line-height:1.5em;">
+<span class="CoveoFieldValue" data-field="@sflastmodifieddate" data-helper="dateTime" data-html-value="false" data-helper-options-use-today-yesterday-and-tomorrow="false" data-helper-options-use-weekday-if-this-week="false" data-helper-options-omit-year-if-current-one="false" data-helper-options-include-time-if-today="false" data-helper-options-include-time-if-this-week="false" data-text-caption="Last Modified Date"></span>
+<span class="CoveoFieldValue" data-field="@sfcreateddate" data-helper="dateTime" data-html-value="false" data-helper-options-use-today-yesterday-and-tomorrow="false" data-helper-options-use-weekday-if-this-week="false" data-helper-options-omit-year-if-current-one="false" data-helper-options-include-time-if-today="false" data-helper-options-include-time-if-this-week="false" data-text-caption="Created Date"></span>
+<span class="CoveoFieldValue" data-field="@sffeaturecategoryc" data-text-caption="Feature Category"></span>
+<span class="CoveoFieldValue" data-field="@sffeaturesubcategoryc" data-text-caption="Sub-Feature Category"></span>
+<span class="CoveoFieldValue" data-field="@sfresolutionsubtypec"></span>
+</div>
+        </div>
+        <div class="coveo-result-row" style="margin-top:8px;">
+            <div class="coveo-result-cell">
+            </div>
+        </div>
+    </div>
+</div>
+</script>
+        <script id="SalesforceKnowledgeArticle" class="result-template" type="text/html" data-field-sfknowledgearticleid=""><div class="coveo-result-frame" style="padding:0 16px 16px 0;">
+    <div class="coveo-result-cell">
+        <span class="CoveoIcon" data-small="true"></span>
+    </div>
+    <div class="coveo-result-cell" style="vertical-align: top;padding-left: 16px;">
+        <div class="coveo-result-row" style="margin-top:0;">
+            <div class="coveo-result-cell coveo-no-wrap" style="vertical-align: top; font-size: 16px;">
+                <a class="CoveoSalesforceResultLink"></a>
+            </div>
+            <div class="coveo-result-cell" style="width:120px;text-align:right;font-size:12px">
+<div class="coveo-result-row">
+    <div class="CoveoAttachToCase" data-display-tooltip="true"></div>
+                </div>
+</div>
+        </div>
+        <div class="coveo-result-row" style="margin-top:12px;">
+            <div class="coveo-result-cell">
+                <span class="CoveoFieldValue" data-field="@sfsummary"></span>
+            </div>
+        </div>
+        <div class="coveo-result-row" style="margin-top:8px;">
+            <div class="coveo-result-cell" style="line-height:1.5em;">
+<span class="CoveoFieldValue" data-field="@sfarticletype" data-text-caption="Type" style="margin-right:30px;"></span>
+<span class="CoveoFieldValue" data-field="@sfpublishstatus" data-text-caption="Status"></span>
+<span class="CoveoFieldValue" data-field="@sfcreateddate" data-helper="date" data-html-value="false" data-helper-options-use-today-yesterday-and-tomorrow="false" data-helper-options-use-weekday-if-this-week="false" data-helper-options-omit-year-if-current-one="false" data-helper-options-include-time-if-today="false" data-helper-options-include-time-if-this-week="false" data-text-caption="Created Date"></span>
+<span class="CoveoFieldValue" data-field="@sflastmodifieddate" data-helper="dateTime" data-html-value="false" data-helper-options-use-today-yesterday-and-tomorrow="false" data-helper-options-use-weekday-if-this-week="false" data-helper-options-omit-year-if-current-one="false" data-helper-options-include-time-if-today="false" data-helper-options-include-time-if-this-week="false" data-text-caption="Last Modified Date"></span>
+<span class="CoveoFieldValue" data-field="@sffeaturecategoryc" data-text-caption="Feature Category"></span>
+<span class="CoveoFieldValue" data-field="@sffeaturesubcategoryc" data-text-caption="Sub-Feature Category"></span>
+</div>
+        </div>
+        <div class="coveo-result-row" style="margin-top:8px;">
+            <div class="coveo-result-cell">
+            </div>
+        </div>
+    </div>
+</div>
+</script>
+        <script id="Default" class="result-template" type="text/html" data-layout="list"><div class="coveo-result-frame">
+  <div class="CoveoResultActionsMenu">
+        <div class="CoveoAttachToCase" data-display-tooltip="true"></div>
+        <div class="CoveoResultActionsSendLiveAgent"></div>
+    </div>
+  <div class="coveo-result-cell" style="vertical-align:top;text-align:center;width:32px;">
+    <span class="CoveoIcon" data-small="true" data-with-label="false"></span>
+  </div>
+  <div class="coveo-result-cell" style="vertical-align: top;padding-left: 16px;">
+    <div class="coveo-result-row" style="margin-top:0;">
+      <div class="coveo-result-cell" style="vertical-align:top;font-size:16px;">
+        <a class="CoveoResultLink" data-always-open-in-new-window="true"></a>
+        <div class="CoveoAttachToCase" data-readonly="true"></div>
+      </div>
+      <div class="coveo-result-cell" style="width:120px;text-align:right;font-size:12px">
+        <div class="coveo-result-row">
+        </div>
+      </div>
+    </div>
+    <div class="coveo-result-row" style="margin-top:10px;">
+      <div class="coveo-result-cell">
+        <span class="CoveoExcerpt"></span>
+      </div>
+    </div>
+    <div class="coveo-result-row" style="margin-top:10px;">
+      <div class="coveo-result-cell">
+<span class="CoveoFieldValue" data-field="@author" data-text-caption="Author" style="margin-right:30px;"></span>
+<span class="CoveoFieldValue" data-field="@created_readable" data-text-caption="Created Date" data-helper="date" data-helper-options-use-today-yesterday-and-tomorrow="false" data-helper-options-use-weekday-if-this-week="false" data-helper-options-omit-year-if-current-one="false" data-helper-options-include-time-if-today="false" data-helper-options-include-time-if-this-week="false"></span>
+<span class="CoveoFieldValue" data-field="@external_category" data-split-values="true" data-text-caption="External Category"></span>
+<span class="CoveoFieldValue" data-field="@article_product" data-text-caption="Product"></span>
+</div>
+    </div>
+    <div class="coveo-result-row" style="margin-top:10px;">
+      <div class="coveo-result-cell">
+        <div class="CoveoPrintableUri" data-always-open-in-new-window="true"></div>
+      </div>
+    </div>
+    <div class="coveo-result-row">
+      <div class="coveo-result-cell">
+        <div class="CoveoMissingTerms"></div>
+      </div>
+    </div>
+  </div>
+</div></script>
+      </div>
+      <div class="CoveoPager"></div>
+      <div class="CoveoLogo"></div>
+      <div class="CoveoResultsPerPage"></div>
+    </div>
+  </div>
+</div></apex:component>

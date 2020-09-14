@@ -1,0 +1,12 @@
+<apex:page standardController="Sales_Engineer_Request__c" sidebar="false" showheader="false">
+    <apex:outputPanel >
+            <apex:pageblock >
+                <apex:pageblocktable value="{!Sales_Engineer_Request__c.Opportunity__r}" var="opp">
+                    <apex:column style="padding:5px; width:20%;vertical-align:baseline" headerValue="Interest" value="{!opp.Interest_Need__c}"/>
+                    <apex:column style="padding:5px; width:20%;vertical-align:baseline" headerValue="Evaluation" value="{!opp.Evaluation_Authority_Timeline__c}"/>
+                    <apex:column style="padding:5px; width:20%;vertical-align:baseline" headerValue="Decision" value="{!opp.Decision_Budget_Authority__c}"/>
+                    <apex:column style="padding:5px; width:20%;vertical-align:baseline" headerValue="Next Step" value="{!opp.Next_Step__c}"/>
+                </apex:pageblocktable>         
+            </apex:pageblock>
+    </apex:outputPanel>
+</apex:page>
